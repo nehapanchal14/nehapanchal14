@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neha Panchal — People Programs & L&D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF8F3;
+    --warm-white: #FFFEF9;
+    --ink: #1C1A16;
+    --ink-light: #4A4740;
+    --ink-muted: #8A8680;
+    --sage: #3D6B52;
+    --sage-light: #EAF2EC;
+    --sage-mid: #7FAF90;
+    --terracotta: #C4623A;
+    --gold: #D4A84B;
+    --border: rgba(28,26,22,0.1);
+    --border-light: rgba(28,26,22,0.06);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(250,248,243,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+  }
+  .nav-logo { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--ink-light); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--sage); }
+
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 8rem 3rem 5rem; max-width: 1100px; margin: 0 auto; position: relative;
+  }
+  .hero-inner { max-width: 620px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--sage); }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 1.06; letter-spacing: -0.03em;
+    color: var(--ink); margin-bottom: 1.5rem;
+    font-weight: 700;
+  }
+  .hero h1 em { font-style: italic; color: var(--sage); }
+
+  .hero-sub { font-size: 18px; font-weight: 300; color: var(--ink-light); line-height: 1.65; max-width: 520px; margin-bottom: 2.5rem; }
+
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block; padding: 12px 28px; background: var(--ink);
+    color: var(--cream); font-size: 14px; text-decoration: none;
+    border-radius: 100px; transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--sage); transform: translateY(-1px); }
+  .btn-ghost {
+    display: inline-block; padding: 12px 28px; border: 1px solid var(--border);
+    color: var(--ink-light); font-size: 14px; text-decoration: none;
+    border-radius: 100px; transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-ghost:hover { border-color: var(--sage); color: var(--sage); transform: translateY(-1px); }
+
+  /* HERO FLOAT PANEL */
+  .hero-float {
+    position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 12px; width: 220px;
+  }
+  .hero-illustration { opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards; width: 100%; }
+  .float-card {
+    background: var(--warm-white); border: 1px solid var(--border);
+    border-radius: 14px; padding: 0.85rem 1.1rem; width: 100%;
+    opacity: 0; transform: translateX(16px); animation: slideIn 0.55s ease forwards;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .float-card:nth-child(2) { animation-delay: 0.55s; }
+  .float-card:nth-child(3) { animation-delay: 0.72s; }
+  .float-card:nth-child(4) { animation-delay: 0.89s; }
+  @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+  @keyframes fadeUp { to { opacity: 1; } }
+  .float-icon {
+    width: 34px; height: 34px; border-radius: 9px; background: var(--sage-light);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .float-num { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); line-height: 1; }
+  .float-label { font-size: 11px; color: var(--ink-muted); margin-top: 2px; }
+
+  /* SECTIONS */
+  .section { max-width: 1100px; margin: 0 auto; padding: 5rem 3rem; border-top: 1px solid var(--border-light); }
+  .section-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 3rem; }
+  .section-num { font-size: 12px; color: var(--ink-muted); letter-spacing: 0.05em; flex-shrink: 0; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 32px; letter-spacing: -0.01em; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { font-size: 16px; font-weight: 300; color: var(--ink-light); line-height: 1.8; margin-bottom: 1.25rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-text strong { font-weight: 500; color: var(--ink); }
+  .about-sidebar { display: flex; flex-direction: column; gap: 1rem; }
+  .sidebar-block { background: var(--warm-white); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .sidebar-block-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.75rem; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill { font-size: 12px; padding: 4px 12px; background: var(--sage-light); color: var(--sage); border-radius: 100px; }
+
+  /* WORK */
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .work-card {
+    background: var(--warm-white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.75rem;
+    transition: transform 0.2s; position: relative; overflow: hidden;
+  }
+  .work-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--sage); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+  }
+  .work-card:hover { transform: translateY(-3px); }
+  .work-card:hover::before { transform: scaleX(1); }
+  .work-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.75rem; }
+  .work-card h3 { font-family: 'DM Serif Display', serif; font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; line-height: 1.3; }
+  .work-card p { font-size: 14px; font-weight: 300; color: var(--ink-light); line-height: 1.7; margin-bottom: 1.25rem; }
+  .work-metric { display: flex; align-items: baseline; gap: 6px; }
+  .work-metric .num { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--ink); line-height: 1; }
+  .work-metric .unit { font-size: 13px; color: var(--ink-muted); }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; }
+  .exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--border-light); }
+  .exp-item:first-child { padding-top: 0; }
+  .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .exp-dates { font-size: 13px; color: var(--ink-muted); font-weight: 300; padding-top: 3px; }
+  .exp-role { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); margin-bottom: 2px; font-weight: 400; }
+  .exp-company { font-size: 14px; color: var(--sage); margin-bottom: 0.75rem; }
+  .exp-desc { font-size: 14px; font-weight: 300; color: var(--ink-light); line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-inner { max-width: 600px; }
+  .contact-inner p { font-size: 16px; font-weight: 300; color: var(--ink-light); line-height: 1.8; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 22px; border: 1px solid var(--border); border-radius: 100px;
+    font-size: 14px; color: var(--ink-light); text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--sage); color: var(--sage); background: var(--sage-light); }
+
+  footer {
+    border-top: 1px solid var(--border-light); padding: 2rem 3rem;
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; color: var(--ink-muted);
+  }
+
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    .hero { padding: 7rem 1.5rem 4rem; min-height: auto; }
+    .hero-float { display: none; }
+    .section { padding: 3.5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Neha Panchal</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">People Programs · L&D · Onboarding</div>
+    <h1>Building employee experiences where people can <em>genuinely</em> grow.</h1>
+    <p class="hero-sub">I design learning experiences, onboarding programs, and talent initiatives that are thoughtful, well-run, and actually meaningful — not just checked boxes.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">See my work</a>
+      <a href="#contact" class="btn-ghost">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="hero-float">
+    <!-- Stat cards -->
+    <div class="float-card">
+      <div class="float-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3D6B52" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <div class="float-num">800+</div>
+        <div class="float-label">Employees onboarded</div>
+      </div>
+    </div>
+    <div class="float-card">
+      <div class="float-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3D6B52" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="float-num">+20%</div>
+        <div class="float-label">Engagement lift</div>
+      </div>
+    </div>
+    <div class="float-card">
+      <div class="float-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3D6B52" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div>
+        <div class="float-num">4+</div>
+        <div class="float-label">Years in People programs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About me</h2>
+  </div>
+  <div class="about-grid fade-up">
+    <div class="about-text">
+      <p>I work at the intersection of <strong>People Programs, Learning & Development, and employee experience</strong> — with a focus on building environments where people can grow, contribute meaningfully, and feel connected to their work.</p>
+      <p>I bring structure, strategy, and heart to development initiatives, from onboarding and learning programs to employee engagement and leadership experiences. What I love most is turning big ideas into practical, well-run programs that support both people and business outcomes.</p>
+      <p>One of my core beliefs is that <strong>growth and change are rarely comfortable — but they're often the catalyst for something new</strong>. That belief shapes how I design programs: with honesty about the process and genuine care for the people going through it.</p>
+      <p>I'm especially drawn to organizations where HR and L&D are seen as strategic partners — where learning, culture, and positive impact truly go hand in hand. I'm currently at Abbott Diabetes Care and <strong>open to the right next opportunity</strong> in Talent Development or People Programs.</p>
+    </div>
+    <div class="about-sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-block-label">Core strengths</div>
+        <div class="pills">
+          <span class="pill">Program design</span>
+          <span class="pill">Onboarding</span>
+          <span class="pill">Early talent</span>
+          <span class="pill">L&D operations</span>
+          <span class="pill">Stakeholder management</span>
+          <span class="pill">Facilitation</span>
+          <span class="pill">Change management</span>
+          <span class="pill">Employee engagement</span>
+        </div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-block-label">Tools & systems</div>
+        <div class="pills">
+          <span class="pill">Workday</span>
+          <span class="pill">Airtable</span>
+          <span class="pill">Culture Amp</span>
+          <span class="pill">Bridge LMS</span>
+          <span class="pill">Greenhouse</span>
+          <span class="pill">Asana</span>
+          <span class="pill">Lucidchart</span>
+        </div>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-block-label">Education</div>
+        <p style="font-size:14px; color:var(--ink-light); font-weight:300;">B.S. Mathematics, Minor in Education<br><span style="color:var(--sage);">UC Davis</span> · December 2021</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Selected work</h2>
+  </div>
+  <div class="work-grid">
+    <div class="work-card fade-up">
+      <span class="work-tag">Onboarding · Abbott</span>
+      <h3>TechOps onboarding redesign</h3>
+      <p>Led end-to-end redesign of a large-scale onboarding program, building a centralized Airtable tracking system, piloting new workflows, and iterating based on feedback for scalability across the organization.</p>
+      <div class="work-metric"><span class="num">800+</span><span class="unit">employees supported</span></div>
+    </div>
+    <div class="work-card fade-up">
+      <span class="work-tag">Engagement · 10x Genomics</span>
+      <h3>Culture Amp survey strategy</h3>
+      <p>Owned end-to-end rollout of the company-wide engagement survey, driving alignment across HR, comms, and leadership to create the conditions for meaningful participation and action.</p>
+      <div class="work-metric"><span class="num">80→95%</span><span class="unit">participation rate</span></div>
+    </div>
+    <div class="work-card fade-up">
+      <span class="work-tag">Early talent · Roku</span>
+      <h3>Intern experience program</h3>
+      <p>Designed and delivered professional development events, community programming, and onboarding for 150+ interns — creating cross-functional exposure and a genuine sense of belonging throughout the program.</p>
+      <div class="work-metric"><span class="num">150+</span><span class="unit">interns supported</span></div>
+    </div>
+    <div class="work-card fade-up">
+      <span class="work-tag">L&D · 10x Genomics</span>
+      <h3>Manager Excellence program</h3>
+      <p>Drove meaningful engagement lift through structured HRBP partnerships, targeted communications, and enablement initiatives designed to make manager development feel relevant and worth showing up for.</p>
+      <div class="work-metric"><span class="num">+20%</span><span class="unit">program engagement</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Experience</h2>
+  </div>
+  <div class="exp-list fade-up">
+    <div class="exp-item">
+      <div class="exp-dates">June 2025 – Present</div>
+      <div class="exp-right">
+        <div class="exp-role">Project Coordinator</div>
+        <div class="exp-company">Abbott Diabetes Care · Alameda, CA</div>
+        <div class="exp-desc">Leading onboarding program redesign, cross-functional coordination, and people programs within the Digital Solutions Group. Supporting the Global Skills Framework rollout and internal leadership programming.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-dates">June 2023 – May 2025</div>
+      <div class="exp-right">
+        <div class="exp-role">Talent Development Coordinator</div>
+        <div class="exp-company">10x Genomics · Pleasanton, CA</div>
+        <div class="exp-desc">Owned learning programs, LMS administration, onboarding operations, and employee engagement initiatives for 1,200+ employees. Facilitated DiSC workshops and led the Culture Amp engagement survey rollout.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-dates">April 2022 – January 2023</div>
+      <div class="exp-right">
+        <div class="exp-role">University Recruiting Coordinator</div>
+        <div class="exp-company">Roku Inc. · San Jose, CA</div>
+        <div class="exp-desc">Managed intern recruiting operations, candidate experience, and internship programming for 150+ hires. Designed community events, led campus outreach, and partnered on intern conversion processes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Let's connect</h2>
+  </div>
+  <div class="contact-inner fade-up">
+    <p>I'm always happy to connect with people in the People, L&D, and HR space — whether to exchange ideas, talk career paths, or explore a potential opportunity. My inbox is open.</p>
+    <div class="contact-links">
+      <a href="mailto:napanchal14@gmail.com" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        napanchal14@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/nehapanchal" target="_blank" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="Neha_Panchal_Resume.pdf" class="contact-link" download>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download resume
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Neha Panchal</span>
+  <span>People Programs · L&D · Onboarding · Bay Area, CA</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
